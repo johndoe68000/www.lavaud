@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+  <script type="text/javascript">
+    //on déclare un tableau
+    var tableau = Array();
+    //var tableau = [];
+    function ajout(){
+      var liste = document.getElementById("listetaches");
+      var texte = document.getElementById("tache").value; //on récupère la valeur de l'input
+
+      //on crée un li avec createElement()
+      var mon_li = document.createElement('li'); //-> <li></li>
+
+      //on remplit le li avec notre texte grâce à innerHTML
+      mon_li.innerHTML = texte; //-> <li>test</li>
+      //mon_li.appendChild(document.createTextNode(texte));
+
+      //on ajoute le li au ul grâce à appendChild()
+      liste.appendChild(mon_li);
+
+      //on push la valeur de texte dans notre tableau
+      tableau.push(texte);
+    }
+
+    function tirage(){
+      //on déclare un nombre random
+      var random = Math.floor(Math.random()*tableau.length);
+      //on affiche la case du tableau correspondant au nombre random
+      alert(tableau[random]);
+    }
+  </script>
+</head>
+<body>
+	<input type="text" id="tache"><input type="button" value="Ajouter" onclick="ajout()">
+  <ul id="listetaches">
+  </ul>
+  <input type="button" value="Tirer au sort" onclick="tirage()">
+</body>
+</html>
